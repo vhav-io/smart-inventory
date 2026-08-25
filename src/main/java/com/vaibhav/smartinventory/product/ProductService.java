@@ -10,4 +10,7 @@ public class ProductService {
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
+    public Product createProduct(Product product) {
+        return productRepository.save(product);
+    }
 }
