@@ -13,4 +13,10 @@ public class ProductExceptionHandler {
     public String handleProductNotFound(ProductNotFoundException exception) {
         return exception.getMessage();
     }
+
+    @ExceptionHandler(DuplicateSkuException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public String handleDuplicateSku(DuplicateSkuException exception) {
+        return exception.getMessage();
+    }
 }

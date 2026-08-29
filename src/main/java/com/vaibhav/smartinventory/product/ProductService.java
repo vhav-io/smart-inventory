@@ -17,6 +17,10 @@ public class ProductService {
 
     public Product createProduct(ProductRequest request) {
 
+        if (productRepository.existsBySku(request.getSku())) {
+            throw new DuplicateSkuException(request.getSku());
+        }
+
         Product product = new Product();
 
         product.setName(request.getName());
