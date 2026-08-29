@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 import jakarta.validation.Valid;
+import com.vaibhav.smartinventory.product.dto.ProductResponse;
+import com.vaibhav.smartinventory.product.dto.ProductRequest;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/products")
@@ -20,17 +23,17 @@ public class ProductController {
     }
 
     @PostMapping
-    public Product createProduct(@Valid @RequestBody Product product) {
-        return productService.createProduct(product);
+    public Product createProduct(@Valid @RequestBody ProductRequest request) {
+        return productService.createProduct(request);
     }
 
     @GetMapping
-    public List<Product> getAllProducts() {
+    public List<ProductResponse> getAllProducts() {
         return productService.getAllProducts();
     }
 
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable Long id) {
+    public ProductResponse getProductById(@PathVariable Long id) {
         return productService.getProductById(id);
     }
 
